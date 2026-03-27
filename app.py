@@ -87,10 +87,16 @@ def get_train_data():
         })
         
     except requests.exceptions.RequestException as e:
+        print(f"[ERROR] API Request Failed: {str(e)}")
+        import traceback
+        traceback.print_exc()
         return jsonify({
             'error': f'Connection Error: {str(e)}'
         }), 500
     except Exception as e:
+        print(f"[ERROR] Server Error: {str(e)}")
+        import traceback
+        traceback.print_exc()
         return jsonify({
             'error': f'Server Error: {str(e)}'
         }), 500
